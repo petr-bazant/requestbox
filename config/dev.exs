@@ -28,3 +28,7 @@ config :requestbox, Requestbox.Repo,
   database: "dev.sqlite3",
   hostname: "localhost",
   pool_size: 10
+
+config :quantum, cron: [
+  "@hourly": {Requestbox.Session, :cleanup}
+]

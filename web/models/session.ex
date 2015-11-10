@@ -1,6 +1,7 @@
 defmodule Requestbox.Session do
   use Requestbox.Web, :model
   use Timex.Ecto.Timestamps
+  alias Requestbox.Session
 
   schema "sessions" do
 
@@ -25,6 +26,12 @@ defmodule Requestbox.Session do
   end
 
   def cleanup() do
+    use Timex
+    alias Requestbox.Repo
 
+    cutoff = Date.now |> Date.shift(hours: -1)
+    # Hack for Ecto + Timex: https://github.com/bitwalker/timex_ecto/issues/8
+    |> DateFormat.format!("{ISO}")
+    Repo.delete_all from(s in Session, where: s.inserted_at < ^cutoff)
   end
 end

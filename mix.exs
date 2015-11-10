@@ -18,8 +18,7 @@ defmodule Requestbox.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Requestbox, []},
-     applications: [:phoenix, :cowboy, :logger, :quantum,
-                    # :timex, :tzdata,
+     applications: [:phoenix, :cowboy, :logger, :quantum, :tzdata,
                     :phoenix_html, :phoenix_ecto, :postgrex, :sqlite_ecto]]
   end
 

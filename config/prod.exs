@@ -62,3 +62,7 @@ config :requestbox, Requestbox.Repo,
 #
 #     config :requestbox, Requestbox.Endpoint, server: true
 #
+
+config :quantum, cron: [
+  "@hourly": {Requestbox.Session, :cleanup}
+]
