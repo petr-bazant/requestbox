@@ -15,6 +15,7 @@ RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
 
 RUN apt-get install -y nodejs postgresql-client
 
+RUN mix ecto.drop
 RUN mix local.rebar
 RUN mix local.hex --force
 
